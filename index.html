@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>back to brain — Neuroathletik | Prävention & Reha</title>
+  <meta name="description" content="back to brain — Neuroathletik im Triathlon: Prävention, Rehabilitation und Übungen bei LWS-Bandscheibenvorfall. Bewegung ist ZENTRAL.">
+  <meta name="author" content="back to brain / Projektarbeit">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: 219 79% 66%;
+      --primary-foreground: 180 100% 98%;
+      --background: 214 51.3% 81.8%;
+      --foreground: 200 25% 10%;
+      --card: 0 0% 100%;
+      --card-foreground: 200 25% 10%;
+      --muted: 180 15% 90%;
+      --muted-foreground: 200 10% 40%;
+      --accent: 17 100% 74%;
+      --accent-foreground: 17 100% 26.5%;
+      --border: 180 15% 85%;
+      --secondary: 180 20% 94%;
+      --radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(180 30% 94%) 100%);
+      color: hsl(var(--foreground));
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 16px;
+      z-index: 50;
+      margin: 16px;
+    }
+
+    .header-inner {
+      background: hsla(0, 0%, 100%, 0.8);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      border: 1px solid hsl(var(--border) / 0.5);
+      padding: 12px 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-img {
+      height: 48px;
+      width: auto;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+
+    .logo-text h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: hsl(var(--foreground));
+    }
+
+    .logo-text p {
+      font-size: 12px;
+      color: hsl(var(--muted-foreground));
+    }
+
+    .nav-desktop {
+      display: none;
+      gap: 4px;
+    }
+
+    @media (min-width: 1024px) {
+      .nav-desktop {
+        display: flex;
+      }
+    }
+
+    .nav-link {
+      padding: 8px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: hsl(var(--muted-foreground));
+      font-weight: 500;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .nav-link:hover {
+      background: hsl(var(--primary) / 0.1);
+      color: hsl(var(--primary));
+    }
+
+    .mobile-menu-btn {
+      display: flex;
+      padding: 8px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    @media (min-width: 1024px) {
+      .mobile-menu-btn {
+        display: none;
+      }
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      padding: 16px 0;
+      border-top: 1px solid hsl(var(--border) / 0.5);
+      margin-top: 12px;
+    }
+
+    .mobile-nav.active {
+      display: flex;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 48px 16px 32px;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      gap: 24px;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-container {
+        grid-template-columns: 1fr 400px;
+        align-items: center;
+      }
+    }
+
+    .hero-card {
+      background: hsl(var(--card));
+      border-radius: 24px;
+      padding: 32px;
+      border: 1px solid hsl(var(--border) / 0.5);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+    }
+
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: hsl(var(--foreground));
+    }
+
+    @media (min-width: 768px) {
+      .hero-title {
+        font-size: 48px;
+      }
+    }
+
+    .hero-highlight {
+      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-lead {
+      margin-top: 16px;
+      color: hsl(var(--muted-foreground));
+      font-size: 16px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, hsl(var(--primary)), hsl(174 72% 35%));
+      color: hsl(var(--primary-foreground));
+      box-shadow: 0 4px 16px hsl(var(--primary) / 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px hsl(var(--primary) / 0.4);
+    }
+
+    .btn-secondary {
+      background: hsl(var(--secondary));
+      color: hsl(var(--foreground));
+      border: 1px solid hsl(var(--border));
+    }
+
+    .btn-secondary:hover {
+      background: hsl(var(--muted));
+    }
+
+    .btn-accent {
+      background: linear-gradient(135deg, hsl(var(--accent)), hsl(38 90% 45%));
+      color: hsl(var(--accent-foreground));
+    }
+
+    .info-card {
+      background: hsl(var(--card));
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid hsl(var(--border) / 0.5);
+    }
+
+    .info-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: hsl(var(--primary) / 0.1);
+      color: hsl(var(--primary));
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 48px 16px;
+      scroll-margin-top: 100px;
+    }
+
+    .section-card {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: hsl(var(--card));
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid hsl(var(--border) / 0.5);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    @media (min-width: 768px) {
+      .section-card {
+        padding: 32px;
+      }
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: hsl(var(--foreground));
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .section-title {
+        font-size: 28px;
+      }
+    }
+
+    .section-text {
+      color: hsl(var(--muted-foreground));
+    }
+
+    /* Neuroathletik Section with Image */
+    .neuro-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .neuro-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+      }
+    }
+
+    .neuro-image {
+      display: flex;
+      justify-content: center;
+    }
+
+    .neuro-image img {
+      max-height: 320px;
+      width: auto;
+      border-radius: 12px;
+      object-fit: contain;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    @media (min-width: 640px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .feature-card {
+      background: hsl(var(--secondary) / 0.3);
+      border: 1px solid hsl(var(--border) / 0.5);
+      border-radius: 12px;
+      padding: 16px;
+      transition: all 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: hsl(var(--primary) / 0.3);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .feature-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: hsl(var(--primary) / 0.1);
+      color: hsl(var(--primary));
+      margin-bottom: 12px;
+    }
+
+    .feature-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      color: hsl(var(--foreground));
+    }
+
+    .feature-desc {
+      font-size: 14px;
+      color: hsl(var(--muted-foreground));
+      margin-top: 4px;
+    }
+
+    /* Highlight Box */
+    .highlight-box {
+      margin-top: 24px;
+      padding: 24px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, hsl(var(--primary) / 0.05), hsl(var(--accent) / 0.05));
+    }
+
+    .highlight-box h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      color: hsl(var(--foreground));
+      margin-bottom: 8px;
+    }
+
+    /* Accordion */
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .accordion-item {
+      border: 1px solid hsl(var(--border) / 0.5);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .accordion-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 16px;
+      background: hsl(var(--secondary) / 0.3);
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.2s;
+    }
+
+    .accordion-trigger:hover {
+      background: hsl(var(--secondary) / 0.5);
+    }
+
+    .accordion-trigger h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      color: hsl(var(--foreground));
+      font-size: 15px;
+    }
+
+    .accordion-trigger span {
+      font-size: 12px;
+      color: hsl(var(--muted-foreground));
+    }
+
+    .accordion-trigger svg {
+      transition: transform 0.2s;
+    }
+
+    .accordion-trigger.active svg {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 16px;
+      background: hsl(var(--card));
+      font-size: 14px;
+      color: hsl(var(--muted-foreground));
+    }
+
+    .accordion-content.active {
+      display: block;
+    }
+
+    .accordion-content p {
+      margin-bottom: 8px;
+    }
+
+    /* Two Column Layout */
+    .grid-2 {
+      display: grid;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .list li {
+      margin-bottom: 8px;
+      color: hsl(var(--muted-foreground));
+    }
+
+    /* Quiz Section */
+    .quiz-grid {
+      display: grid;
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .quiz-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .quiz-card {
+      background: hsl(var(--secondary) / 0.3);
+      border: 1px solid hsl(var(--border) / 0.5);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .quiz-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .quiz-card fieldset {
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .quiz-card legend {
+      font-size: 14px;
+      font-weight: 600;
+      color: hsl(var(--foreground));
+      margin-bottom: 8px;
+    }
+
+    .quiz-card label {
+      display: block;
+      padding: 8px 12px;
+      margin: 4px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-size: 14px;
+    }
+
+    .quiz-card label:hover {
+      background: hsl(var(--primary) / 0.1);
+    }
+
+    .quiz-card input[type="radio"] {
+      margin-right: 8px;
+    }
+
+    .quiz-result {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--accent) / 0.1));
+      border-left: 4px solid hsl(var(--primary));
+    }
+
+    .interpretation-card {
+      margin-top: 24px;
+      padding: 20px;
+      background: hsl(var(--secondary) / 0.5);
+      border-radius: 12px;
+    }
+
+    /* Contact Section */
+    .contact-card a.btn {
+      margin-top: 16px;
+    }
+
+    .impressum {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid hsl(var(--border) / 0.5);
+    }
+
+    .impressum h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 8px;
+    }
+
+    .impressum p {
+      font-size: 13px;
+      color: hsl(var(--muted-foreground));
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 48px;
+      padding: 24px 16px;
+      text-align: center;
+      color: hsl(var(--muted-foreground));
+      font-size: 14px;
+      border-top: 1px solid hsl(var(--border) / 0.3);
+    }
+
+    .footer-warning {
+      margin-top: 8px;
+      font-weight: 600;
+      color: hsl(var(--foreground));
+    }
+
+    /* Utility */
+    .text-primary {
+      color: hsl(var(--primary));
+    }
+
+    .mt-4 {
+      margin-top: 16px;
+    }
+
+    .copy-small {
+      font-size: 13px;
+      color: hsl(var(--muted-foreground));
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-content">
+        <div class="logo-section">
+          <!-- HIER DEIN LOGO EINFÜGEN: Ersetze "dein-logo.jpg" mit deinem Bildpfad -->
+          <img src="dein-logo.jpg" alt="Back to Brain Logo" class="logo-img">
+          <div class="logo-text">
+            <h1 class="font-display">back to brain</h1>
+            <p>Neuroathletik • Prävention • Rehabilitation</p>
+          </div>
+        </div>
+
+        <nav class="nav-desktop">
+          <a href="#was-ist" class="nav-link">Neuroathletik</a>
+          <a href="#lws" class="nav-link">LWS</a>
+          <a href="#uebungen" class="nav-link">Übungen</a>
+          <a href="#praevention" class="nav-link">Prävention</a>
+          <a href="#rehab" class="nav-link">Rehabilitation</a>
+          <a href="#quiz" class="nav-link">Quiz</a>
+          <a href="#kontakt" class="nav-link">Kontakt</a>
+        </nav>
+
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menü öffnen">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="mobile-nav" id="mobileNav">
+        <a href="#was-ist" class="nav-link">Neuroathletik</a>
+        <a href="#lws" class="nav-link">LWS</a>
+        <a href="#uebungen" class="nav-link">Übungen</a>
+        <a href="#praevention" class="nav-link">Prävention</a>
+        <a href="#rehab" class="nav-link">Rehabilitation</a>
+        <a href="#quiz" class="nav-link">Quiz</a>
+        <a href="#kontakt" class="nav-link">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-card">
+        <h2 class="hero-title font-display">
+          Bewegung ist<br>
+          <span class="hero-highlight">ZENTRAL</span>
+        </h2>
+        <p class="hero-lead">
+          back to brain verbindet neurowissenschaftliche Prinzipien mit sportpraktischem Training für Triathlet*innen. 
+          Fokus: Neuroathletik zur Leistungssteigerung, Prävention und Rehabilitation — speziell bei 
+          Bandscheibenvorfällen im Bereich der Lendenwirbelsäule (LWS).
+        </p>
+
+        <div class="cta-buttons">
+          <a href="#uebungen" class="btn btn-primary">Übungen</a>
+          <a href="#quiz" class="btn btn-secondary">Quiz</a>
+          <a href="#praevention" class="btn btn-accent">Prävention</a>
+        </div>
+
+        <p class="copy-small mt-4">
+          <strong>Kurz:</strong> Neuroathletik = Input → Integration → Output. Besserer Input = bessere Bewegung.
+        </p>
+      </div>
+
+      <aside class="info-card">
+        <h3 class="font-display">Kurz & knapp</h3>
+        <p class="section-text">
+          <strong>Zielgruppe:</strong> Triathlet*innen, Trainer*innen, Therapeut*innen<br>
+          <strong>Thema:</strong> Bandscheibenvorfall — Prävention & Rehabilitation mit neuroathletischen Tools.
+        </p>
+        <div class="pills">
+          <span class="pill">Neuroathletik</span>
+          <span class="pill">konventionelle Athletik</span>
+          <span class="pill">Triathlon</span>
+        </div>
+        <p class="copy-small mt-4">
+          <strong>Hinweis:</strong> Inhalte ersetzen keine medizinische Behandlung. Bei Schmerzen ärztliche Abklärung.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <main>
+    <!-- WAS IST NEUROATHLETIK -->
+    <section class="section" id="was-ist">
+      <div class="section-card">
+        <div class="neuro-grid">
+          <div>
+            <h2 class="section-title font-display">Was ist Neuroathletik?</h2>
+            <p class="section-text">
+              Neuroathletik stellt das Nervensystem in den Mittelpunkt des Trainings: 
+              <strong>Input → Integration → Output</strong>. 
+              Es geht darum, visuelle, vestibuläre und propriozeptive Informationen zu optimieren, 
+              damit das Gehirn bessere Bewegungsentscheidungen trifft.
+            </p>
+          </div>
+          <div class="neuro-image">
+            <!-- HIER DEIN HOMUNCULUS-BILD EINFÜGEN: Ersetze "homunculus.png" mit deinem Bildpfad -->
+            <img src="homunculus.png" alt="Motorischer und Sensorischer Homunculus">
+          </div>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M12 5v.01M17 7l-.01.01M19 12h.01M17 17l-.01.01M12 19v.01M7 17l-.01.01M5 12h.01M7 7l-.01.01"></path>
+              </svg>
+            </div>
+            <h4 class="feature-title font-display">Visuelle Stabilität & Blicksteuerung</h4>
+            <p class="feature-desc">Optimierung der visuellen Verarbeitung für präzise Bewegungssteuerung</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2a10 10 0 1 0 10 10"></path>
+                <path d="M12 12l8-8"></path>
+                <path d="M16 4h4v4"></path>
+              </svg>
+            </div>
+            <h4 class="feature-title font-display">Vestibuläre Integration</h4>
+            <p class="feature-desc">Gleichgewicht und Kopfbewegungen für bessere räumliche Orientierung</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"></path>
+                <path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"></path>
+                <path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"></path>
+                <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"></path>
+              </svg>
+            </div>
+            <h4 class="feature-title font-display">Propriozeption & Körperwahrnehmung</h4>
+            <p class="feature-desc">Verbessertes Körpergefühl durch gezielte sensorische Stimulation</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <h4 class="feature-title font-display">Schmerzmodulation & Schutzverhalten</h4>
+            <p class="feature-desc">Reduktion von Schutzmechanismen für natürliche Bewegungsmuster</p>
+          </div>
+        </div>
+
+        <div class="highlight-box" id="lws">
+          <h3 class="font-display">Warum im Triathlon?</h3>
+          <p class="section-text">
+            Triathlon kombiniert Rotationen (Schwimmen), lange statische Belastungen (Aeroposition – Rennrad) und repetitive Stoßelemente (Laufen). 
+            Das Nervensystem reagiert darauf mit Kompensationen, die zu 
+            Überlastungsschäden führen können — die Neuroathletik zielt darauf ab, diese Kompensationen 
+            frühzeitig zu korrigieren.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÜBUNGEN -->
+    <section class="section" id="uebungen">
+      <div class="section-card">
+        <h2 class="section-title font-display">Übungen — Neuroathletik & konventionelle Athletik</h2>
+        <p class="section-text">
+          Jede Übung enthält Ziel, Durchführung und Dosierung.
+        </p>
+
+        <div class="accordion">
+          <!-- Neuroathletik Übungen -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              <div>
+                <h4>Visuelle Stabilität — Smooth Pursuits (Augenfolge)</h4>
+                <span>Ziel: Verbesserung visuelle Stabilität & Reduktion Schutzspannung</span>
+              </div>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p><strong>Durchführung:</strong> Halte Daumen etwa 30 cm vor das Gesicht, Kopf ruhig, nur Augen folgen langsam nach rechts/links und oben/unten. </p>
+              <p><strong>Dosierung:</strong> 30–45 Sekunden pro Richtung, 2–3 Durchgänge.</p>
+              <p><strong>Hinweis:</strong> Vorsicht bei Schwindel — abbrechen bei Übelkeit.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              <div>
+                <h4>Vestibuläres Training — VOR-Training</h4>
+                <span>Ziel: Stabilität bei Kopfbewegungen</span>
+              </div>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p><strong>VOR-Training</strong> in der Neuroathletik ist Training des <strong>V</strong>estibulo-<strong>O</strong>kulären <strong>R</strong>eflexes <strong>(VOR)</strong> – also des Reflexes, der dafür sorgt, dass dein Blick stabil bleibt, wenn sich dein Kopf bewegt. Ohne funktionierenden VOR wären Buchstaben beim Lesen verwackelt, Sportbewegungen unpräzise und Gleichgewicht unsicher.</p>
+              <p><strong>Durchführung:</strong> Fixiere einen Punkt; bewege den Kopf schnell horizontal während Blick auf Ziel bleibt. Danach vertikal.</p>
+              <p><strong>Dosierung:</strong> 30 Wiederholungen je Richtung, 2 Durchgänge.
+              <p><strong>Hinweis:</strong> Bei anhaltendem Schwindel ärztliche Abklärung.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              <div>
+                <h4>Propriozeptive Mikrobewegung — Vierfüßler</h4>
+                <span>Ziel: Aktivierung Multifidus & restliche Rumpfmuskulatur</span>
+              </div>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            <div class="accordion-content">
+              <p><strong>Durchführung:</strong> Vierfüßlerstand, sehr kleine Gewichtsverlagerungen; bewusstes Spüren im LWS-Bereich.</p>
+              <p><strong>Dosierung:</strong> 60 Sekunden pro Durchgang, 2–3 Durchgänge. Fokus auf Qualität > Quantität.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              <div>
+                <h4>Atem-Reset — Parasympathische Aktivierung</h4>
+                <span>Ziel: Tonusreduktion & Schmerzmodulation</span>
+              </div>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p><strong>Durchführung/Dosierung:</strong> 4 Sek. einatmen, 6–8 Sek. ausatmen;</p> 
+              <p>2–3 Minuten. Ruhig, gesteuert.</p>
+              <p><strong>Wirkung:</strong> Reduziert Spannung im Rücken; gut vor Trainingseinheiten oder zur Regeneration.</p>
+            </div>
+          </div>
+
+          <!-- Konventionelle Athletik -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              <div>
+                <h4>Dead Bug — Core-Stabilität</h4>
+                <span>Ziel: LWS-Neutralität & Ansteuerung Gliedmaße</span>
+              </div>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p><strong>Durchführung:</strong> Rückenlage, Arme & Beine im 90°-Winkel. Diagonal Arm – Bein kontrolliert absenken, LWS neutral halten.</p>
+              <p><strong>Dosierung:</strong> 3×10 Wiederholungen pro Seite.</p>
+              <p><strong>Hinweis:</strong> Steigere sauber — kein Druckgefühl LWS.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              <div>
+                <h4>90/90 Hüftmobilität</h4>
+                <span>Ziel: Rotationsfähigkeit Hüfte</span>
+              </div>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p><strong>Durchführung:</strong> Sitzend, beide Hüften und Knie in je 90°. Rotationsbewegungen kontrolliert durchführen.</p>
+              <p><strong>Dosierung:</strong> 2×60 Sekunden pro Seite.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              <div>
+                <h4>Pallof-Press (Anti-Rotation)</h4>
+                <span>Ziel: Stärkung Anti-Rotationsstabilität</span>
+              </div>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p><strong>Durchführung:</strong> Theraband/Cable seitlich fixieren, Presse aus der Brust, kurz halten.</p>
+              <p><strong>Dosierung:</strong> 3×12 Wiederholungen pro Seite.</p>
+              <p><strong>Hinweis:</strong> Spannungsaufbau durch Rumpf, nicht durch Arme.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              <div>
+                <h4>Glute Bridge / Hip Thrust</h4>
+                <span>Ziel: Hüftstrecker stärken</span>
+              </div>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p><strong>Durchführung:</strong> Rückenlage, Füße schulterbreit, Hüfte kontrolliert heben, halten, senken.</p>
+              <p><strong>Dosierung:</strong> 3×12–15 Wiederholungen</p>
+              <p><strong>Hinweis:</strong> Fokus auf bewusste Aktivierung der Gesäßmuskulatur.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRÄVENTION & REHABILITATION -->
+    <section class="section" id="praevention">
+      <div class="grid-2">
+        <div class="section-card">
+          <h2 class="section-title font-display">Prävention</h2>
+          <p class="section-text">
+            Prävention im Triathlon bedeutet systematische Belastungssteuerung und neurozentrierte Integration in Trainingsroutinen.
+          </p>
+
+          <h4 class="font-display" style="margin-top: 16px; margin-bottom: 8px;">Praktische Maßnahmen</h4>
+          <ul class="list">
+            <li>Regelmäßige neuroathletische Vorreize (2–5 Minuten vor jeder Trainingseinheit)</li>
+            <li>Ergonomie-Checks für die Aeroposition (Mikrobewegungen während langer Fahrten)</li>
+            <li>Periodisierte Erholungs- & technische Fokuswochen</li>
+            <li>Mischung aus Mobilität, Stabilität und sportartspezifischer Technik</li>
+          </ul>
+
+          <h4 class="font-display" style="margin-top: 16px; margin-bottom: 8px;">Warm-Up (neurozentriert)</h4>
+          <p class="section-text">
+            <strong>Beispielplan:</strong><br>
+            1) 60s langsame Augenfolgebewegungen<br>
+            2) 30s VOR-Training<br>
+            3) 60s propriozeptive Mikrobewegungen<br>
+            4) Kurzes Core-Set (Dead Bugs 10/Seite)
+          </p>
+        </div>
+
+        <div class="section-card" id="rehab">
+          <h2 class="section-title font-display">Rehabilitation — Stufenmodell</h2>
+          <ol class="list">
+            <li><strong>Akutphase:</strong> Schmerzregulation, Atem-Reset, sehr niedrigschwellige neuroathletische Aktivierung</li>
+            <li><strong>Aufbau:</strong> Core-Stabilität, repetitive Mikrobewegungen, leichte Belastungssteigerung</li>
+            <li><strong>Return-to-Sport:</strong> Integration von Neuro-Drills in Schwimmen, Radfahren & Laufen</li>
+            <li><strong>Langfristig:</strong> Periodische Beobachtung & regelmäßiges präventives Training</li>
+          </ol>
+
+          <p class="section-text mt-4">
+            <strong>Return-to-Sport Kriterien:</strong> Schmerzfreie Bewegungsqualität, stabiler Einbeinstand, 
+            neurophysiologische Tests (Blickstabilität, VOR), progressive Belastbarkeit im Sportkontext.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="section" id="quiz">
+      <div class="section-card">
+        <h2 class="section-title font-display">Quick-Check: Körper & Gehirn</h2>
+        <p class="section-text">
+          Mache den kurzen Selbsttest, um ein Gefühl für deine körperliche- und neuronale Fitness zu bekommen.</p>
+          <p><strong>Wichtig:</strong> Das ist ein Screening — kein medizinischer Test!
+        </p>
+
+        <div class="quiz-grid">
+          <!-- Physical Quiz -->
+          <div class="quiz-card">
+            <h3 class="font-display">Körperlicher Fitness-Test</h3>
+            <form id="physicalQuiz">
+              <fieldset>
+                <legend>1) Plank-Haltezeit</legend>
+                <label><input type="radio" name="q1" value="3"> länger als 90 Sekunden</label>
+                <label><input type="radio" name="q1" value="2"> 60–90 Sekunden</label>
+                <label><input type="radio" name="q1" value="1"> 30–60 Sekunden</label>
+                <label><input type="radio" name="q1" value="0"> weniger als 30 Sekunden</label>
+              </fieldset>
+
+              <fieldset style="margin-top: 16px;">
+                <legend>2) 90/90 Hüftmobilität</legend>
+                <label><input type="radio" name="q2" value="3"> beide Seiten stabil</label>
+                <label><input type="radio" name="q2" value="2"> eine Seite stabil</label>
+                <label><input type="radio" name="q2" value="1"> instabil</label>
+                <label><input type="radio" name="q2" value="0"> nicht möglich</label>
+              </fieldset>
+
+              <fieldset style="margin-top: 16px;">
+                <legend>3) Einbeinstand</legend>
+                <label><input type="radio" name="q3" value="3"> stabil (30 Sekunden)</label>
+                <label><input type="radio" name="q3" value="2"> wackelig</label>
+                <label><input type="radio" name="q3" value="1"> schwierig</label>
+                <label><input type="radio" name="q3" value="0"> nicht möglich</label>
+              </fieldset>
+
+              <fieldset style="margin-top: 16px;">
+                <legend>4) Ausdauer pro Woche</legend>
+                <label><input type="radio" name="q4" value="3"> 4x oder mehr</label>
+                <label><input type="radio" name="q4" value="2"> 2–3x</label>
+                <label><input type="radio" name="q4" value="1"> 1x</label>
+                <label><input type="radio" name="q4" value="0"> selten</label>
+              </fieldset>
+
+              <fieldset style="margin-top: 16px;">
+                <legend>5) Rückenbeschwerden</legend>
+                <label><input type="radio" name="q5" value="3"> nie</label>
+                <label><input type="radio" name="q5" value="2"> selten</label>
+                <label><input type="radio" name="q5" value="1"> häufig</label>
+                <label><input type="radio" name="q5" value="0"> sehr oft</label>
+              </fieldset>
+
+              <button type="button" class="btn btn-primary mt-4" onclick="calculatePhysical()">Auswerten</button>
+            </form>
+            <div id="physicalResult" class="quiz-result" style="display: none;"></div>
+          </div>
+
+          <!-- Neuro Quiz -->
+          <div class="quiz-card">
+            <h3 class="font-display">Neurofitness-Test</h3>
+            <form id="neuroQuiz">
+              <fieldset>
+                <legend>1) Blickstabilität</legend>
+                <label><input type="radio" name="n1" value="3"> problemlos</label>
+                <label><input type="radio" name="n1" value="2"> meist gut</label>
+                <label><input type="radio" name="n1" value="1"> schwierig</label>
+                <label><input type="radio" name="n1" value="0"> sehr instabil</label>
+              </fieldset>
+
+              <fieldset style="margin-top: 16px;">
+                <legend>2) Schwindel bei Kopfbewegungen</legend>
+                <label><input type="radio" name="n2" value="3"> nie</label>
+                <label><input type="radio" name="n2" value="2"> selten</label>
+                <label><input type="radio" name="n2" value="1"> häufig</label>
+                <label><input type="radio" name="n2" value="0"> immer</label>
+              </fieldset>
+
+              <fieldset style="margin-top: 16px;">
+                <legend>3) Propriozeption (Körpergefühl)</legend>
+                <label><input type="radio" name="n3" value="3"> sicher</label>
+                <label><input type="radio" name="n3" value="2"> kleine Abweichung</label>
+                <label><input type="radio" name="n3" value="1"> große Abweichung</label>
+                <label><input type="radio" name="n3" value="0"> unsicher</label>
+              </fieldset>
+
+              <fieldset style="margin-top: 16px;">
+                <legend>4) Einbeinstand mit geschlossenen Augen</legend>
+                <label><input type="radio" name="n4" value="3"> >15 Sekunden</label>
+                <label><input type="radio" name="n4" value="2"> 10–15 Sekunden</label>
+                <label><input type="radio" name="n4" value="1"> 5–10 Sekunden</label>
+                <label><input type="radio" name="n4" value="0"> <5 Sekunden</label>
+              </fieldset>
+
+              <fieldset style="margin-top: 16px;">
+                <legend>5) Reizverarbeitung / Stressreaktion</legend>
+                <label><input type="radio" name="n5" value="3"> ruhig</label>
+                <label><input type="radio" name="n5" value="2"> meist okay</label>
+                <label><input type="radio" name="n5" value="1"> angespannt</label>
+                <label><input type="radio" name="n5" value="0"> überfordert</label>
+              </fieldset>
+
+              <button type="button" class="btn btn-primary mt-4" onclick="calculateNeuro()">Auswerten</button>
+            </form>
+            <div id="neuroResult" class="quiz-result" style="display: none;"></div>
+          </div>
+        </div>
+
+        <div class="interpretation-card">
+          <h4 class="font-display">Interpretation</h4>
+          <p class="section-text">
+            Kombiniere Körper- und Neuro-Score: <strong>hoch/hoch</strong> → stark belastbar; 
+            <strong>hoch/niedrig</strong> → Körper stark, Nervensystem optimieren; 
+            <strong>niedrig/niedrig</strong> → systematisches Neuroathletik- und Athletikprogramm empfohlen.
+          </p>
+          <p class="section-text mt-4">
+            Bei starken Schmerzen oder neurologischen Ausfällen: unbedingt medizinische Abklärung!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section class="section" id="kontakt">
+      <div class="section-card contact-card">
+        <h2 class="section-title font-display">Über / Kontakt</h2>
+        <p class="section-text">
+          <strong>back to brain</strong> ist Teil der Projektarbeit „Bewegung ist <strong>ZENTRAL</strong>" 
+          und verbindet neurophysiologische Erkenntnisse mit praktischer Trainingsarbeit für den Spitzensport Triathlon.
+        </p>
+        <p class="section-text">Wenn du Fragen hast oder Feedback geben möchtest:</p>
+
+        <a href="mailto:backtobrain@outlook.de" class="btn btn-secondary">backtobrain@outlook.de</a>
+
+        <div class="impressum">
+          <h4 class="font-display">Impressum</h4>
+          <p>
+            Back to Brain — Zusatz zu einer Projektarbeit mit dem Namen: „Bewegung ist <strong>ZENTRAL</strong>"<br>
+            Verantwortliche: Lentje Sike-Tiana Ortfeld<br>
+            Schülerin 12. Klasse (24PA1) - Oberschule an der Ronzelenstraße, Bremen<br>
+            <strong>(Diese Website dient ausschließlich Bildungszwecken!)</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© <span id="year"></span> back to brain — Bewegung ist <strong>ZENTRAL</strong></p>
+    <p class="footer-warning">Inhalte dienen Informationszwecken und ersetzen keine ärztliche Beratung!</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Jahr setzen
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile Menü
+    function toggleMobileMenu() {
+      const nav = document.getElementById('mobileNav');
+      nav.classList.toggle('active');
+    }
+
+    // Accordion
+    function toggleAccordion(trigger) {
+      const content = trigger.nextElementSibling;
+      const isActive = trigger.classList.contains('active');
+      
+      // Alle schließen
+      document.querySelectorAll('.accordion-trigger').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('active'));
+      
+      // Gewähltes öffnen (wenn es nicht schon offen war)
+      if (!isActive) {
+        trigger.classList.add('active');
+        content.classList.add('active');
+      }
+    }
+
+    // Physical Quiz
+    function calculatePhysical() {
+      const form = document.forms['physicalQuiz'];
+      let score = 0;
+      let allAnswered = true;
+      
+      for (let i = 1; i <= 5; i++) {
+        const answer = form['q' + i];
+        if (!answer.value) {
+          allAnswered = false;
+        } else {
+          score += Number(answer.value);
+        }
+      }
+      
+      if (!allAnswered) {
+        alert('Bitte fülle alle Fragen im körperlichen Test aus.');
+        return;
+      }
+      
+      let text = '';
+      if (score >= 12) text = 'Sehr fit – starke körperliche Voraussetzungen.';
+      else if (score >= 8) text = 'Gute Fitness – leichte Defizite.';
+      else if (score >= 4) text = 'Mittelmäßig – Verbesserungspotenzial.';
+      else text = 'Niedrig – großer Nutzen durch neuroathletisches und physisches Training.';
+      
+      const result = document.getElementById('physicalResult');
+      result.innerHTML = '<strong>Dein Score: ' + score + '/15</strong><br>' + text;
+      result.style.display = 'block';
+    }
+
+    // Neuro Quiz
+    function calculateNeuro() {
+      const form = document.forms['neuroQuiz'];
+      let score = 0;
+      let allAnswered = true;
+      
+      for (let i = 1; i <= 5; i++) {
+        const answer = form['n' + i];
+        if (!answer.value) {
+          allAnswered = false;
+        } else {
+          score += Number(answer.value);
+        }
+      }
+      
+      if (!allAnswered) {
+        alert('Bitte fülle alle Fragen im Neuro-Test aus.');
+        return;
+      }
+      
+      let text = '';
+      if (score >= 12) text = 'Sehr hohe Gehirnfitness – starke Neuroleistung.';
+      else if (score >= 8) text = 'Gut – einzelne Systeme brauchen Optimierung.';
+      else if (score >= 4) text = 'Mittel – typische Defizite bei LWS-Beschwerden.';
+      else text = 'Niedrig – großes Potenzial für Neuroathletik.';
+      
+      const result = document.getElementById('neuroResult');
+      result.innerHTML = '<strong>Dein Neuro-Score: ' + score + '/15</strong><br>' + text;
+      result.style.display = 'block';
+    }
+
+    // Mobile Menü bei Klick auf Link schließen
+    document.querySelectorAll('.mobile-nav .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileNav').classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
